@@ -15,7 +15,7 @@ main {
     align-items: center;
     justify-content: space-between;
     background-color: rgba(255, 255, 255, 0.8);
-    font-size: 1.2em;
+    font-size: 1.1em;
     width: 100%;
     max-width: 800px;
     padding: 30px;
@@ -25,7 +25,7 @@ main {
   
   .grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
     width: 100%;
     max-width: 800px;
