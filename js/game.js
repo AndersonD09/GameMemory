@@ -1,6 +1,6 @@
 const grid = document.querySelector('.grid');
 const spanPlayer = document.querySelector('.player');
-const timer = document.querySelector('.timer');
+
 
 const characters = [
   '6',
@@ -110,17 +110,35 @@ const loadGame = () => {
   });
 }
 
-const startTimer = () => {
+function startTimer(duration, display) {
 
-  this.loop = setInterval(() => {
-    const currentTime = +timer.innerHTML;
-    timer.innerHTML = currentTime + 1;
+  var timer = duration, minutes, seconds;
+
+  setInterval(function() {
+
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if(++timer < 0) {
+      timer = duration;
+    }
+
   }, 1000);
 
 }
 
-window.onload = () => {
-  spanPlayer.innerHTML = localStorage.getItem('player');
-  startTimer();
-  loadGame();
-}
+  window.onload = function() {
+
+    var duration = 60 * 0;
+    var display = document.querySelector("#timer");
+
+    spanPlayer.innerHTML = localStorage.getItem('player');
+    
+    startTimer(duration, display);
+    loadGame();
+  }
